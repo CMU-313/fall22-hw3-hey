@@ -39,18 +39,19 @@ public class TestJpa extends BaseTransactionalTest {
         Assert.assertNotNull(new InternalAuthenticationHandler().authenticate("username", "12345678"));
 
         //Create new applicant
-        //ApplicantDao applicantDao = new ApplicantDao();
+        ApplicantDao applicantDao = new ApplicantDao();
         Applicant applicant = new Applicant();
-        applicant.setId("1");
         applicant.setName("Zach Van Bennekum");
         applicant.setGPA("4.0");
         applicant.setSkills("Java, Python, C");
         applicant.setOther("Plays Football");
+        String appid = applicantDao.create(applicant);
+        
         TransactionUtil.commit();
         
+        //search applicant by ID
+        applicant = applicantDao.getById(appid);
         Assert.assertNotNull(applicant);
-        //String AppId = applicantDao.create(applicant, "1");
-
-
+        Assert.assertEquals("Zach Van Bennekum", applicant.getName());
     }
 }

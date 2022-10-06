@@ -28,12 +28,20 @@ import java.util.*;
 
 public class ApplicantDao {
 
-    public String create(Applicant applicant, String applicantId) throws Exception {
+    public String create(Applicant applicant) throws Exception {
+        applicant.setId("1");
         EntityManager em = ThreadLocalContext.get().getEntityManager();
         // Create the user
-        applicant.setId(UUID.randomUUID().toString());
-        //setId = applicant.setId(applicantId);
         em.persist(applicant);
         return applicant.getId();
+    }
+
+    public Applicant getById(String id) {
+        EntityManager em = ThreadLocalContext.get().getEntityManager();
+        try {
+            return em.find(Applicant.class, id);
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 }
