@@ -1,0 +1,1 @@
+create memory table T_APPLICANTS ( APPLICANT_ID_C varchar(36) not null, APPLICANT_NAME varchar(10) not null, APPLICANT_GPA varchar(4) not null, APPLICANT_SKILLS varchar(50) not null, APPLICANT_OTHER varchar(50) );
