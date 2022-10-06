@@ -10,6 +10,8 @@ angular.module('docs').controller('UserProfile', function($stateParams, Restangu
   Restangular.one('user', $stateParams.username).get().then(function(data) {
     $scope.user = data;
 
-    
+    $scope.userGPA = data.gpa;
+    $scope.skills = data.skills;
+    $scope.otherinfo = data.otherInfo;
   });
 });
