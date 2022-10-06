@@ -2,6 +2,7 @@ package com.sismics.docs.core.dao.jpa;
 
 import com.sismics.docs.BaseTransactionalTest;
 import com.sismics.docs.core.dao.UserDao;
+import com.sismics.docs.core.model.jpa.Applicant;
 import com.sismics.docs.core.model.jpa.User;
 import com.sismics.docs.core.util.TransactionUtil;
 import com.sismics.docs.core.util.authentication.InternalAuthenticationHandler;
@@ -35,5 +36,14 @@ public class TestJpa extends BaseTransactionalTest {
 
         // Authenticate using the database
         Assert.assertNotNull(new InternalAuthenticationHandler().authenticate("username", "12345678"));
+
+        //Create new applicant
+        Applicant applicant = new Applicant();
+        applicant.setId("1");
+        applicant.setName("Zach Van Bennekum");
+        applicant.setGPA("4.0");
+        applicant.setSkills("Java, Python, C");
+        applicant.setOther("Plays Football");
+        Assert.assertNotNull(applicant);
     }
 }
