@@ -1,6 +1,7 @@
 package com.sismics.docs.core.dao.jpa;
 
 import com.sismics.docs.BaseTransactionalTest;
+import com.sismics.docs.core.dao.ApplicantDao;
 import com.sismics.docs.core.dao.UserDao;
 import com.sismics.docs.core.model.jpa.Applicant;
 import com.sismics.docs.core.model.jpa.User;
@@ -38,12 +39,18 @@ public class TestJpa extends BaseTransactionalTest {
         Assert.assertNotNull(new InternalAuthenticationHandler().authenticate("username", "12345678"));
 
         //Create new applicant
+        //ApplicantDao applicantDao = new ApplicantDao();
         Applicant applicant = new Applicant();
         applicant.setId("1");
         applicant.setName("Zach Van Bennekum");
         applicant.setGPA("4.0");
         applicant.setSkills("Java, Python, C");
         applicant.setOther("Plays Football");
+        TransactionUtil.commit();
+        
         Assert.assertNotNull(applicant);
+        //String AppId = applicantDao.create(applicant, "1");
+
+
     }
 }

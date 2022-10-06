@@ -71,6 +71,4 @@ public class Applicant {
         this.other = other;
         return this;
     }
-
-
 }
