@@ -1,0 +1,42 @@
+<div class="row" ng-controller="Dashboard as dashboard">
+    <div class="col-md-12">
+      <div class="well well-3d">
+        <h3 class="well-3d-header text-muted ng-binding"> 
+          Current Applicants 
+          <span class="fas fa-chevron-left" ng-click="dashboard.getPrevThree()"/>
+          <span class="fas fa-chevron-right" ng-click="dashboard.getNextThree()"/>
+        </h3>
+        <div class="row">
+          <div class="col-sm-4" ng-repeat="applicant in dashboard.activeApplicants">
+            <div class="applicant">
+              <div class="well-3d-header text-muted ng-binding">{{applicant.name}}</div>
+              <div class="fas fa-user fa-10x applicantIcon"/>
+              <div>GPA: <span class="applicantText">{{applicant.GPA}}</span> </div>
+              <div>Skills</div>
+              <ul>
+                <li class="applicantText" ng-repeat="skill in applicant.skills">{{skill}}</li>
+              </ul>
+              <div>Other:</div>
+              <ul>
+                <li class="applicantText" ng-repeat="other in applicant.other">{{other}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="well well-3d">
+        <h3 class="well-3d-header text-muted ng-binding"> Relevant Statistics </h3>
+        <div>
+          <div>
+            <div>Average GPA: <span class="applicantText">{{dashboard.stats.averageGPA}}</span></div>
+          </div>
+          <div>Common Skills:</div>
+          <ul>
+            <li class="applicantText" ng-repeat="skill in dashboard.stats.commonSkills">{{skill}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
