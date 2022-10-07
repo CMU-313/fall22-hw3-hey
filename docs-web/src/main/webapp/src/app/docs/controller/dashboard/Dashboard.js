@@ -2,12 +2,12 @@ angular.module('docs').controller('Dashboard', function () {
     var dashboard = this;
     dashboard.activeIdx = [0, 3];
     dashboard.stats  = { averageGPA: 0, commonSkills: ["Python", "C", "Leadership"] };
-    applicants = [{ name: "John Smith", GPA: 4.0, skills: ["Python", "C++"], other: ["Captian of Soccer Team"] },
-    { name: "Alice Baker", GPA: 4.0, skills: ["Java", "Leadership"], other: ["Volunteers at soup kitchens"] },
-    { name: "Andy Marshall", GPA: 4.0, skills: ["C", "Biligual"], other: ["Works at local bakery"] },
-    { name: "Andrew Carnegie", GPA: 1.0, skills: ["C", "Biligual"], other: ["Works at local bakery"] },
-    { name: "Andrew Mellon", GPA: 2.5, skills: ["C", "Cool"], other: ["Works at local bakery"] },
-    { name: "Bob Smith", GPA: 4.0, skills: ["C", "Biligual"], other: ["Works at local bakery"] }
+    applicants = [{ name: "John Smith", GPA: 4.0, skills: "Python C++", other: "Captian of Soccer Team" },
+    { name: "Alice Baker", GPA: 4.0, skills: "Java Leadership", other: "Volunteers at soup kitchens" },
+    { name: "Andy Marshall", GPA: 4.0, skills: "C Biligual", other: "Works at local bakery" },
+    { name: "Andrew Carnegie", GPA: 1.0, skills: "C Biligual", other: "Works at local bakery" },
+    { name: "Andrew Mellon", GPA: 2.5, skills: "C Cool", other: "Works at local bakery" },
+    { name: "Bob Smith", GPA: 4.0, skills: "C Biligual", other: "Works at local bakery" }
     ];
 
     for (let i = 0; i < 6; i++) {
@@ -21,7 +21,7 @@ angular.module('docs').controller('Dashboard', function () {
         });
     }
 
-    Restangular.one('user/list').get({
+    Restangular.one('applicants/list').get({
         sort_column: 1,
         asc: true
     }).then(function (data) {
@@ -38,7 +38,6 @@ angular.module('docs').controller('Dashboard', function () {
             return accumulator + a;
         }
     });
-
 
     dashboard.activeApplicants = dashboard.applicants.slice(0, 3);
     dashboard.getNextThree = function () {
