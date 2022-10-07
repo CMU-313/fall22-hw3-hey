@@ -64,4 +64,5 @@ angular.module('docs').controller('Dashboard', function () {
         dashboard.activeApplicants = dashboard.applicants.slice(i, j);
         dashboard.activeIdx = [i, j];
     };
+    dashboard.stats = {averageGPA: 3.9, commonSkills: ["Python", "C", "Leadership"] };
 });

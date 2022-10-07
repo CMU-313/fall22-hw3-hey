@@ -64,6 +64,15 @@ angular.module('docs',
         }
       }
     })
+    .state('dashboard', {
+      url: '/dashboard',
+      views: {
+        'page': {
+          templateUrl: 'partial/docs/dashboard.html',
+          controller: 'Dashboard'
+        }
+      }
+    })
     .state('settings', {
       url: '/settings',
       abstract: true,
